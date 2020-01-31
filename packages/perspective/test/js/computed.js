@@ -223,7 +223,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "sum",
-                        type: "int",
                         computed_function_name: "+",
                         inputs: ["x", "x"]
                     }
@@ -242,7 +241,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "sum",
-                        type: "float",
                         computed_function_name: "+",
                         inputs: ["w", "w"]
                     }
@@ -261,7 +259,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "sum",
-                        type: "float",
                         computed_function_name: "+",
                         inputs: ["w", "x"]
                     }
@@ -283,7 +280,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "sum",
-                        type: "float",
                         computed_function_name: "+",
                         inputs: ["a", "b"]
                     }
@@ -302,7 +298,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "difference",
-                        type: "int",
                         computed_function_name: "-",
                         inputs: ["v", "x"]
                     }
@@ -321,7 +316,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "difference",
-                        type: "float",
                         computed_function_name: "-",
                         inputs: ["u", "w"]
                     }
@@ -340,7 +334,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "difference",
-                        type: "float",
                         computed_function_name: "-",
                         inputs: ["w", "x"]
                     }
@@ -362,7 +355,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "difference",
-                        type: "float",
                         computed_function_name: "-",
                         inputs: ["a", "b"]
                     }
@@ -381,7 +373,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "multiply",
-                        type: "float",
                         computed_function_name: "*",
                         inputs: ["v", "x"]
                     }
@@ -400,7 +391,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "multiply",
-                        type: "float",
                         computed_function_name: "*",
                         inputs: ["u", "w"]
                     }
@@ -419,7 +409,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "multiply",
-                        type: "float",
                         computed_function_name: "*",
                         inputs: ["w", "x"]
                     }
@@ -441,7 +430,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "product",
-                        type: "float",
                         computed_function_name: "*",
                         inputs: ["a", "b"]
                     }
@@ -460,7 +448,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "divide",
-                        type: "int",
                         computed_function_name: "/",
                         inputs: ["v", "x"]
                     }
@@ -479,7 +466,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "divide",
-                        type: "int",
                         computed_function_name: "/",
                         inputs: ["u", "w"]
                     }
@@ -498,7 +484,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "divide",
-                        type: "int",
                         computed_function_name: "/",
                         inputs: ["w", "x"]
                     }
@@ -520,7 +505,6 @@ module.exports = perspective => {
                 let table2 = table.add_computed([
                     {
                         column: "divide",
-                        type: "float",
                         computed_function_name: "/",
                         inputs: ["a", "b"]
                     }
@@ -665,9 +649,7 @@ module.exports = perspective => {
                         },
                         computed_function_name: "+",
                         column: "plus2",
-                        inputs: ["x", "x"],
-                        input_type: "integer",
-                        type: "integer"
+                        inputs: ["x", "x"]
                     }
                 ]);
 
