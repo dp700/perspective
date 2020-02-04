@@ -266,7 +266,7 @@ class TestView(object):
         '''In Python 3.7 and above, a dict's insertion order is guaranteed. We use this guarantee to ensure that
         the order of columns shown is the same as the order of keys in a schema/data passed in by the user.
 
-        In the Python 2 runtime, order cannot be guaranteed without the usage of OrderedMap in C++.
+        In the Python 2 runtime, order cannot be guaranteed.
         '''
         import six
         data = [{"a": 1, "b": 2, "c": 3, "d": 4}, {"a": 3, "b": 4, "c": 5, "d": 6}]
@@ -296,6 +296,36 @@ class TestView(object):
                 keys = list(record.keys())
                 for i in range(len(keys)):
                     assert keys[i] == order[i]
+
+    def test_view_aggregate_order_with_columns(self):
+        '''If `columns` is provided, order is always guaranteed.'''
+        data = [{"a": 1, "b": 2, "c": 3, "d": 4}, {"a": 3, "b": 4, "c": 5, "d": 6}]
+        tbl = Table(data)
+        view = tbl.view(
+            row_pivots=["a"],
+            columns=["a", "b", "c", "d"],
+            aggregates={"d": "avg", "c": "avg", "b": "last", "a": "last"}
+        )
+
+        order = ["__ROW_PATH__", "a", "b", "c", "d"]
+        assert view.column_paths() == order
+
+    def test_view_df_aggregate_order_with_columns(self):
+        '''If `columns` is provided, order is always guaranteed.'''
+        data = pd.DataFrame({
+            "a": [1, 2, 3],
+            "b": [2, 3, 4],
+            "c": [3, 4, 5],
+            "d": [4, 5, 6]
+        }, columns=["d", "a", "c", "b"])
+        tbl = Table(data)
+        view = tbl.view(
+            row_pivots=["a"],
+            aggregates={"d": "avg", "c": "avg", "b": "last", "a": "last"}
+        )
+
+        order = ["__ROW_PATH__", "index", "d", "a", "c", "b"]
+        assert view.column_paths() == order
 
     def test_view_aggregates_with_no_columns(self):
         data = [{"a": 1, "b": 2, "c": 3, "d": 4}, {"a": 3, "b": 4, "c": 5, "d": 6}]
